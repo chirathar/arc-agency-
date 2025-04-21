@@ -70,7 +70,7 @@ export const metadata = {
       "max-snippet": -1,
     },
   },
-    generator: 'v0.dev'
+  generator: 'v0.dev'
 }
 
 export default function RootLayout({
@@ -81,7 +81,7 @@ export default function RootLayout({
   const organizationData = {
     name: "Arc Agency",
     url: "https://arcagency.in",
-    logo: "https://arcagency.in/logo.png",
+    logo: "https://arcagency.in/logo-light.png",
     sameAs: ["https://www.instagram.com/arcagency.in", "https://www.linkedin.com/company/arcagency-in/"],
     contactPoint: {
       "@type": "ContactPoint",
@@ -117,6 +117,3 @@ export default function RootLayout({
     </html>
   )
 }
-
-
-import './globals.css'

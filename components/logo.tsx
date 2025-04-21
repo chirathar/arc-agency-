@@ -1,15 +1,30 @@
+"use client"
+
 import Link from "next/link"
-import { Zap } from "lucide-react"
+import Image from "next/image"
+import { useTheme } from "next-themes"
+import { useEffect, useState } from "react"
 
 export default function Logo() {
+  const { theme, resolvedTheme } = useTheme()
+  const [currentTheme, setCurrentTheme] = useState("light")
+
+  useEffect(() => {
+    setCurrentTheme(resolvedTheme || theme || "light")
+  }, [theme, resolvedTheme])
+
+  const logoSrc = currentTheme === "dark" ? "/logo-dark.png" : "/logo-light.png"
+
   return (
-    <Link href="/" className="flex items-center gap-2 group">
-      <div className="bg-gradient-to-br from-purple-500 to-purple-700 p-2 rounded-md shadow-sm transition-all duration-300 group-hover:shadow-md group-hover:scale-105">
-        <Zap className="h-5 w-5 text-white" />
-      </div>
-      <span className="font-heading font-bold text-xl bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-purple-800 dark:from-purple-400 dark:to-purple-600">
-        Arc Agency
-      </span>
+    <Link href="/" className="flex items-center gap-3">
+      <Image
+        src={logoSrc}
+        alt="Arc Agency Logo"
+        width={36}
+        height={36}
+        className="h-9 w-9 object-contain"
+      />
+      <span className="text-lg font-semibold whitespace-nowrap">Arc Agency</span>
     </Link>
   )
 }
